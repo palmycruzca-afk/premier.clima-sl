@@ -240,3 +240,11 @@ body {
     animation: none !important;
   }
 }
+
+@media (hover: none), (pointer: coarse) {
+  .pointer-playground::before,
+  .pointer-playground::after,
+  .pointer-aura {
+    display: none !important;
+  }
+}
