@@ -20,21 +20,28 @@ $glow = New-Object System.Drawing.SolidBrush([System.Drawing.Color]::FromArgb(42
 $graphics.FillEllipse($glow, 720, -140, 620, 620)
 $glow.Dispose()
 
-$card = New-Object System.Drawing.SolidBrush([System.Drawing.Color]::FromArgb(210, 2, 15, 40))
-$graphics.FillRectangle($card, 82, 155, 170, 170)
+$card = New-Object System.Drawing.Drawing2D.GraphicsPath
+$card.AddArc(82, 155, 34, 34, 180, 90)
+$card.AddArc(218, 155, 34, 34, 270, 90)
+$card.AddArc(218, 291, 34, 34, 0, 90)
+$card.AddArc(82, 291, 34, 34, 90, 90)
+$card.CloseFigure()
+$cardBrush = New-Object System.Drawing.SolidBrush([System.Drawing.Color]::FromArgb(245, 14, 165, 233))
+$graphics.FillPath($cardBrush, $card)
+$cardBrush.Dispose()
 $card.Dispose()
 $border = New-Object System.Drawing.Pen([System.Drawing.Color]::FromArgb(170, 103, 232, 249), 3)
 $graphics.DrawRectangle($border, 82, 155, 170, 170)
 $border.Dispose()
 
-$fanPen = New-Object System.Drawing.Pen([System.Drawing.Color]::FromArgb(245, 165, 243, 252), 9)
+$fanPen = New-Object System.Drawing.Pen([System.Drawing.Color]::White, 9)
 $fanPen.StartCap = [System.Drawing.Drawing2D.LineCap]::Round
 $fanPen.EndCap = [System.Drawing.Drawing2D.LineCap]::Round
 foreach ($startAngle in @(18, 108, 198, 288)) {
   $graphics.DrawArc($fanPen, 112, 185, 110, 110, $startAngle, 62)
 }
 $fanPen.Dispose()
-$hub = New-Object System.Drawing.SolidBrush([System.Drawing.Color]::FromArgb(245, 165, 243, 252))
+$hub = New-Object System.Drawing.SolidBrush([System.Drawing.Color]::White)
 $graphics.FillEllipse($hub, 152, 225, 30, 30)
 $hub.Dispose()
 
@@ -46,10 +53,10 @@ $fontTitle = New-Object System.Drawing.Font('Arial', 54, [System.Drawing.FontSty
 $fontSl = New-Object System.Drawing.Font('Arial', 48, [System.Drawing.FontStyle]::Bold)
 $fontSub = New-Object System.Drawing.Font('Arial', 22, [System.Drawing.FontStyle]::Bold)
 $fontDesc = New-Object System.Drawing.Font('Arial', 20, [System.Drawing.FontStyle]::Regular)
-$graphics.DrawString('PREMIER CLIMA', $fontTitle, $white, 300, 168)
-$graphics.DrawString('SL', $fontSl, $cyan, 302, 245)
-$graphics.DrawString('AIRE ACONDICIONADO Y CALEFACCION', $fontSub, $muted, 302, 350)
-$graphics.DrawString('Climatizacion profesional en Madrid Sur y Toledo', $fontDesc, $light, 302, 420)
+$graphics.DrawString('PREMIER', $fontTitle, $cyan, 300, 150)
+$graphics.DrawString('CLIMA SL', $fontSl, $cyan, 302, 220)
+$graphics.DrawString('AIRE ACONDICIONADO Y CALEFACCION', $fontSub, $muted, 302, 315)
+$graphics.DrawString('Climatizacion profesional en Madrid Sur y Toledo', $fontDesc, $light, 302, 385)
 
 $spark = New-Object System.Drawing.SolidBrush([System.Drawing.Color]::FromArgb(220, 165, 243, 252))
 $graphics.FillEllipse($spark, 1035, 120, 10, 10)
