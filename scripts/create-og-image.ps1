@@ -27,18 +27,13 @@ $border = New-Object System.Drawing.Pen([System.Drawing.Color]::FromArgb(170, 10
 $graphics.DrawRectangle($border, 82, 155, 170, 170)
 $border.Dispose()
 
-$fanBrush = New-Object System.Drawing.SolidBrush([System.Drawing.Color]::FromArgb(245, 165, 243, 252))
-$fanCenterX = 167
-$fanCenterY = 240
-foreach ($angle in @(0, 90, 180, 270)) {
-  $graphics.ResetTransform()
-  $graphics.TranslateTransform($fanCenterX, $fanCenterY)
-  $graphics.RotateTransform($angle)
-  $graphics.TranslateTransform(-$fanCenterX, -$fanCenterY)
-  $graphics.FillEllipse($fanBrush, $fanCenterX - 17, $fanCenterY - 67, 34, 70)
+$fanPen = New-Object System.Drawing.Pen([System.Drawing.Color]::FromArgb(245, 165, 243, 252), 9)
+$fanPen.StartCap = [System.Drawing.Drawing2D.LineCap]::Round
+$fanPen.EndCap = [System.Drawing.Drawing2D.LineCap]::Round
+foreach ($startAngle in @(18, 108, 198, 288)) {
+  $graphics.DrawArc($fanPen, 112, 185, 110, 110, $startAngle, 62)
 }
-$graphics.ResetTransform()
-$fanBrush.Dispose()
+$fanPen.Dispose()
 $hub = New-Object System.Drawing.SolidBrush([System.Drawing.Color]::FromArgb(245, 165, 243, 252))
 $graphics.FillEllipse($hub, 152, 225, 30, 30)
 $hub.Dispose()
