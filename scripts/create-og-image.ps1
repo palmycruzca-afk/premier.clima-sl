@@ -27,10 +27,18 @@ $border = New-Object System.Drawing.Pen([System.Drawing.Color]::FromArgb(170, 10
 $graphics.DrawRectangle($border, 82, 155, 170, 170)
 $border.Dispose()
 
-$fanPen = New-Object System.Drawing.Pen([System.Drawing.Color]::FromArgb(245, 165, 243, 252), 10)
-$graphics.DrawArc($fanPen, 111, 184, 112, 112, 25, 118)
-$graphics.DrawArc($fanPen, 111, 184, 112, 112, 145, 118)
-$fanPen.Dispose()
+$fanBrush = New-Object System.Drawing.SolidBrush([System.Drawing.Color]::FromArgb(245, 165, 243, 252))
+$fanCenterX = 167
+$fanCenterY = 240
+foreach ($angle in @(0, 90, 180, 270)) {
+  $graphics.ResetTransform()
+  $graphics.TranslateTransform($fanCenterX, $fanCenterY)
+  $graphics.RotateTransform($angle)
+  $graphics.TranslateTransform(-$fanCenterX, -$fanCenterY)
+  $graphics.FillEllipse($fanBrush, $fanCenterX - 17, $fanCenterY - 67, 34, 70)
+}
+$graphics.ResetTransform()
+$fanBrush.Dispose()
 $hub = New-Object System.Drawing.SolidBrush([System.Drawing.Color]::FromArgb(245, 165, 243, 252))
 $graphics.FillEllipse($hub, 152, 225, 30, 30)
 $hub.Dispose()
@@ -56,4 +64,6 @@ $spark.Dispose()
 
 $output = Join-Path $PSScriptRoot '..\public\og-image.png'
 $bitmap.Save($output, [System.Drawing.Imaging.ImageFormat]::Png)
+$jpgOutput = Join-Path $PSScriptRoot '..\public\og-image.jpg'
+$bitmap.Save($jpgOutput, [System.Drawing.Imaging.ImageFormat]::Jpeg)
 $fontTitle.Dispose(); $fontSl.Dispose(); $fontSub.Dispose(); $fontDesc.Dispose(); $white.Dispose(); $cyan.Dispose(); $muted.Dispose(); $light.Dispose(); $graphics.Dispose(); $bitmap.Dispose()
