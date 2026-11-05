@@ -1,0 +1,29 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#020617"/>
+      <stop offset="0.52" stop-color="#0B1D41"/>
+      <stop offset="1" stop-color="#075985"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(900 180) rotate(135) scale(450)">
+      <stop stop-color="#22D3EE" stop-opacity="0.4"/>
+      <stop offset="1" stop-color="#2563EB" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#020617" flood-opacity="0.55"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="630" rx="28" fill="url(#bg)"/>
+  <rect width="1200" height="630" rx="28" fill="url(#glow)"/>
+  <path d="M0 520C250 420 420 570 680 460C900 365 1040 420 1200 330V630H0V520Z" fill="#0E7490" fill-opacity="0.12"/>
+  <g filter="url(#shadow)">
+    <rect x="82" y="155" width="170" height="170" rx="42" fill="url(#bg)" stroke="#67E8F9" stroke-opacity="0.65" stroke-width="3"/>
+    <circle cx="167" cy="240" r="56" stroke="#A5F3FC" stroke-width="9" stroke-linecap="round" stroke-dasharray="62 28"/>
+    <circle cx="167" cy="240" r="15" fill="#A5F3FC"/>
+  </g>
+  <text x="300" y="235" fill="white" font-family="Arial, Helvetica, sans-serif" font-size="74" font-weight="800" letter-spacing="-2">PREMIER CLIMA</text>
+  <text x="302" y="310" fill="#67E8F9" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="800">SL</text>
+  <text x="302" y="380" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="600" letter-spacing="4">AIRE ACONDICIONADO Y CALEFACCIÓN</text>
+  <text x="302" y="450" fill="#BAE6FD" font-family="Arial, Helvetica, sans-serif" font-size="25">Climatización profesional en Madrid Sur y Toledo</text>
+  <circle cx="1040" cy="125" r="5" fill="#A5F3FC"/><circle cx="1080" cy="180" r="3" fill="#67E8F9"/><circle cx="990" cy="215" r="4" fill="#93C5FD"/>
+</svg>
